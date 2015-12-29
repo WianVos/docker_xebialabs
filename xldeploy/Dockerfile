@@ -1,9 +1,13 @@
 FROM debian:8.2
 
 MAINTAINER Fai Fung <ffung@xebia.com>
+MAINTAINER Wian Vos <wvos@xebia.com>
+
+ADD sources.list /etc/apt/sources.list
+ADD apt_preferences /etc/apt/preferences
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-7-jre-headless unzip wget --no-install-recommends && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-8-jre-headless unzip wget --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
 ENV version 5.1.3
